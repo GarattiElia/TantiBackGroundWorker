@@ -19,7 +19,7 @@ namespace MoltiBGW
         BackgroundWorker bgw1, bgw2;
 
         //Vettore con bgw
-        BackgroundWorker[] bgw_vett = new BackgroundWorker[100];
+        BackgroundWorker[] bgw_vettore = new BackgroundWorker[100];
 
         public frmMain()
         {
@@ -75,7 +75,7 @@ namespace MoltiBGW
 
         private void btnAvvio100_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < bgw_vett.Length; i++)
+            for (int i = 0; i < bgw_vettore.Length; i++)
             {
                 bgw1 = new BackgroundWorker();
                 bgw1.WorkerReportsProgress = true;
@@ -83,10 +83,10 @@ namespace MoltiBGW
                 bgw1.DoWork += Bgw_DoWork;
                 bgw1.ProgressChanged += Bgw_ProgressChanged;
                 bgw1.RunWorkerCompleted += Bgw_RunWorkerCompleted;
-                bgw_vett[i] = bgw1;
+                bgw_vettore[i] = bgw1;
             }
 
-            foreach (var bgw in bgw_vett)
+            foreach (var bgw in bgw_vettore)
             {
                 bgw.RunWorkerAsync(txt100);
             }
@@ -94,7 +94,7 @@ namespace MoltiBGW
 
         private void btnStop100_Click(object sender, EventArgs e)
         {
-            foreach (var bgw in bgw_vett)
+            foreach (var bgw in bgw_vettore)
             {
                 bgw.CancelAsync();
             }
